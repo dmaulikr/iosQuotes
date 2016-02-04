@@ -13,6 +13,7 @@
 		5B0B59771C63A94B00E64859 /* quotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B59751C63A94B00E64859 /* quotes.xcdatamodeld */; };
 		5B0B59791C63A94B00E64859 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B0B59781C63A94B00E64859 /* Assets.xcassets */; };
 		5B0B597C1C63A94B00E64859 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0B597A1C63A94B00E64859 /* LaunchScreen.storyboard */; };
+		5B0B59841C63B3CB00E64859 /* SingleQuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B59831C63B3CB00E64859 /* SingleQuoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5B0B59781C63A94B00E64859 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B0B597B1C63A94B00E64859 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B0B597D1C63A94B00E64859 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B0B59831C63B3CB00E64859 /* SingleQuoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleQuoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				5B0B596E1C63A94B00E64859 /* AppDelegate.swift */,
 				5B0B59701C63A94B00E64859 /* ViewController.swift */,
 				5B0B59721C63A94B00E64859 /* Main.storyboard */,
+				5B0B59831C63B3CB00E64859 /* SingleQuoteViewController.swift */,
 				5B0B59781C63A94B00E64859 /* Assets.xcassets */,
 				5B0B597A1C63A94B00E64859 /* LaunchScreen.storyboard */,
 				5B0B597D1C63A94B00E64859 /* Info.plist */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0B59711C63A94B00E64859 /* ViewController.swift in Sources */,
+				5B0B59841C63B3CB00E64859 /* SingleQuoteViewController.swift in Sources */,
 				5B0B596F1C63A94B00E64859 /* AppDelegate.swift in Sources */,
 				5B0B59771C63A94B00E64859 /* quotes.xcdatamodeld in Sources */,
 			);
