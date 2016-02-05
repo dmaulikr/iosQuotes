@@ -8,6 +8,23 @@
 
 import UIKit
 
+
+
+extension UIColor {
+    static private func randomCGFloat() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
+    static func randomColor() -> UIColor {
+        let r = randomCGFloat()
+        let g = randomCGFloat()
+        let b = randomCGFloat()
+        
+        // If you wanted a random alpha, just create another
+        // random number for that too.
+        return UIColor(red: r, green: g, blue: b, alpha: 1.0)
+    }
+}
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     override func viewDidLoad() {
@@ -22,24 +39,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 3
+        return 5
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-//        if let cell = tableView.dequeueReusableCellWithIdentifier("customCell") as? TableViewCell {
-//            
-//            if indexPath.row == 0{
-//                cell.nameLabel.text = usuari.name?.first
-//                print(usuari.name?.first)
-//            } else if indexPath.row == 1{
-//                cell.nameLabel.text = usuari.phone
-//            } else if indexPath.row == 2{
-//                cell.nameLabel.text = usuari.email
-//            }
-//            
-//            return cell
-//            
-//        }
+        if let cell = tableView.dequeueReusableCellWithIdentifier("quoteCell") as? QuoteCell {
+            
+            cell.listImageView.layer.cornerRadius = cell.listImageView.frame.size.width / 2
+            cell.listImageView.clipsToBounds = true
+            cell.listImageView.backgroundColor = UIColor.randomColor()
+            //Guardar colors?
+
+            cell.roundBackgroundLetter.text = "S"
+            //cell.roundBackgroundLetter.font = UIFont.boldSystemFontOfSize(25)
+            cell.roundBackgroundLetter.textColor = UIColor.whiteColor()
+            cell.roundBackgroundLetter.textAlignment = NSTextAlignment.Center
+
+            return cell
+            
+        }
         return UITableViewCell()
     }
     

@@ -11,6 +11,7 @@ import UIKit
 class SingleQuoteViewController: UIViewController {
 
     @IBOutlet weak var roundImageView: UIImageView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,10 @@ class SingleQuoteViewController: UIViewController {
         roundImageView.clipsToBounds = true
         roundImageView.layer.borderWidth = 3
         roundImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        if let url = NSURL(string: "https://theysaidso.com/img/bgs/man_on_the_mountain.jpg"){
+            backgroundImage.image = Network.downloadImageFromUrl(url)
+        }
         // Do any additional setup after loading the view.
     }
 

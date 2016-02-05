@@ -38,7 +38,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mr. Rabbit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCo-gZ-oOR">
                                 <rect key="frame" x="261" y="490" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -58,6 +58,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="featured" id="Ypi-ZC-k0u"/>
                     <connections>
+                        <outlet property="backgroundImage" destination="7cj-Ie-Etb" id="3qh-np-WAx"/>
                         <outlet property="roundImageView" destination="cU8-DW-Niz" id="dJO-dX-gQN"/>
                     </connections>
                 </viewController>
@@ -81,26 +82,41 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ekc-o9-VDR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="quoteCell" id="Ekc-o9-VDR" customClass="QuoteCell" customModule="quotes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ekc-o9-VDR" id="24x-Ai-ZBZ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-rabbit-toy" translatesAutoresizingMaskIntoConstraints="NO" id="9p8-r6-bV7">
-                                                    <rect key="frame" x="8" y="8" width="50" height="50"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9p8-r6-bV7">
+                                                    <rect key="frame" x="18" y="8" width="60" height="60"/>
+                                                    <color key="backgroundColor" red="1" green="0.21173110959999999" blue="0.21425801990000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="M93-aT-lVQ"/>
-                                                        <constraint firstAttribute="width" constant="50" id="y4A-5H-ktA"/>
+                                                        <constraint firstAttribute="height" constant="60" id="M93-aT-lVQ"/>
+                                                        <constraint firstAttribute="width" constant="60" id="y4A-5H-ktA"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAc-iW-oD5">
+                                                    <rect key="frame" x="27" y="27" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="vAc-iW-oD5" firstAttribute="centerY" secondItem="9p8-r6-bV7" secondAttribute="centerY" id="9D4-km-tyt"/>
                                                 <constraint firstItem="9p8-r6-bV7" firstAttribute="top" secondItem="24x-Ai-ZBZ" secondAttribute="topMargin" id="GNn-hM-a4W"/>
-                                                <constraint firstItem="9p8-r6-bV7" firstAttribute="leading" secondItem="24x-Ai-ZBZ" secondAttribute="leadingMargin" id="Zaq-Jf-4fo"/>
+                                                <constraint firstItem="vAc-iW-oD5" firstAttribute="height" secondItem="9p8-r6-bV7" secondAttribute="height" id="NmR-JS-Ndu"/>
+                                                <constraint firstItem="vAc-iW-oD5" firstAttribute="width" secondItem="9p8-r6-bV7" secondAttribute="width" id="Wyq-Sq-UAA"/>
+                                                <constraint firstItem="9p8-r6-bV7" firstAttribute="leading" secondItem="24x-Ai-ZBZ" secondAttribute="leadingMargin" constant="10" id="Zaq-Jf-4fo"/>
+                                                <constraint firstItem="vAc-iW-oD5" firstAttribute="centerX" secondItem="9p8-r6-bV7" secondAttribute="centerX" id="pxr-Rx-UbQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="listImageView" destination="9p8-r6-bV7" id="MC6-U9-JH7"/>
+                                            <outlet property="roundBackgroundLetter" destination="vAc-iW-oD5" id="4Mi-cr-QZ7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
