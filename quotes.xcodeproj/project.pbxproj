@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		473A87C01C6D051E00F43B3F /* QuoteLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A87BF1C6D051E00F43B3F /* QuoteLogic.swift */; };
+		473A87C21C6D276800F43B3F /* ExpandedListItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A87C11C6D276800F43B3F /* ExpandedListItemViewController.swift */; };
 		5B0B596F1C63A94B00E64859 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B596E1C63A94B00E64859 /* AppDelegate.swift */; };
 		5B0B59711C63A94B00E64859 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B59701C63A94B00E64859 /* ViewController.swift */; };
 		5B0B59741C63A94B00E64859 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0B59721C63A94B00E64859 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		473A87BF1C6D051E00F43B3F /* QuoteLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteLogic.swift; sourceTree = "<group>"; };
+		473A87C11C6D276800F43B3F /* ExpandedListItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedListItemViewController.swift; sourceTree = "<group>"; };
 		5B0B596B1C63A94B00E64859 /* quotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0B596E1C63A94B00E64859 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B0B59701C63A94B00E64859 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				5B0B59721C63A94B00E64859 /* Main.storyboard */,
 				5B54588A1C64EAAF0098671A /* Network.swift */,
 				5B0B59831C63B3CB00E64859 /* SingleQuoteViewController.swift */,
+				473A87C11C6D276800F43B3F /* ExpandedListItemViewController.swift */,
 				5B5458881C64E03C0098671A /* QuoteCell.swift */,
 				5B0B59781C63A94B00E64859 /* Assets.xcassets */,
 				5B0B597A1C63A94B00E64859 /* LaunchScreen.storyboard */,
@@ -162,6 +165,7 @@
 				5B0B59711C63A94B00E64859 /* ViewController.swift in Sources */,
 				5B54588B1C64EAAF0098671A /* Network.swift in Sources */,
 				5B54588F1C64F2270098671A /* Quote.swift in Sources */,
+				473A87C21C6D276800F43B3F /* ExpandedListItemViewController.swift in Sources */,
 				5B0B59841C63B3CB00E64859 /* SingleQuoteViewController.swift in Sources */,
 				5B0B596F1C63A94B00E64859 /* AppDelegate.swift in Sources */,
 				5B0B59771C63A94B00E64859 /* quotes.xcdatamodeld in Sources */,

@@ -14,6 +14,8 @@ class QuoteCell: UITableViewCell {
     
     @IBOutlet weak var roundBackgroundLetter: UILabel!
     
+    @IBOutlet weak var authorName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

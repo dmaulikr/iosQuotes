@@ -103,17 +103,26 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjY-h7-c2f">
+                                                    <rect key="frame" x="118" y="26" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="vAc-iW-oD5" firstAttribute="centerY" secondItem="9p8-r6-bV7" secondAttribute="centerY" id="9D4-km-tyt"/>
                                                 <constraint firstItem="9p8-r6-bV7" firstAttribute="top" secondItem="24x-Ai-ZBZ" secondAttribute="topMargin" id="GNn-hM-a4W"/>
                                                 <constraint firstItem="vAc-iW-oD5" firstAttribute="height" secondItem="9p8-r6-bV7" secondAttribute="height" id="NmR-JS-Ndu"/>
+                                                <constraint firstItem="DjY-h7-c2f" firstAttribute="leading" secondItem="9p8-r6-bV7" secondAttribute="trailing" constant="40" id="VGW-kA-dZF"/>
                                                 <constraint firstItem="vAc-iW-oD5" firstAttribute="width" secondItem="9p8-r6-bV7" secondAttribute="width" id="Wyq-Sq-UAA"/>
                                                 <constraint firstItem="9p8-r6-bV7" firstAttribute="leading" secondItem="24x-Ai-ZBZ" secondAttribute="leadingMargin" constant="10" id="Zaq-Jf-4fo"/>
+                                                <constraint firstItem="DjY-h7-c2f" firstAttribute="centerY" secondItem="24x-Ai-ZBZ" secondAttribute="centerY" id="msg-Y4-irM"/>
                                                 <constraint firstItem="vAc-iW-oD5" firstAttribute="centerX" secondItem="9p8-r6-bV7" secondAttribute="centerX" id="pxr-Rx-UbQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="authorName" destination="DjY-h7-c2f" id="8iD-yk-R7J"/>
                                             <outlet property="listImageView" destination="9p8-r6-bV7" id="MC6-U9-JH7"/>
                                             <outlet property="roundBackgroundLetter" destination="vAc-iW-oD5" id="4Mi-cr-QZ7"/>
                                         </connections>
@@ -136,11 +145,12 @@
                     <tabBarItem key="tabBarItem" systemItem="downloads" id="X5T-vD-lvQ"/>
                     <connections>
                         <outlet property="quotesTableView" destination="0dZ-mO-ccg" id="A1h-h7-Q0W"/>
+                        <segue destination="BKU-mg-4W7" kind="show" identifier="showSegue" id="IwB-eg-YtA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="771" y="418"/>
+            <point key="canvasLocation" x="779" y="418"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fLI-4D-CTA">
@@ -159,6 +169,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1HR-2m-cNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-20" y="418"/>
+        </scene>
+        <!--Expanded List Item View Controller-->
+        <scene sceneID="mT6-ro-egZ">
+            <objects>
+                <viewController id="BKU-mg-4W7" customClass="ExpandedListItemViewController" customModule="quotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S75-rx-KTN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Opd-fa-ng1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TKn-dq-B5G">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-bg" translatesAutoresizingMaskIntoConstraints="NO" id="mti-4e-7LA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your time is limited, so don’t waste it living someone else’s life" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="bgy-3v-Qg2">
+                                <rect key="frame" x="177" y="161" width="246" height="129"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-rabbit-toy" translatesAutoresizingMaskIntoConstraints="NO" id="hGp-kT-SYe">
+                                <rect key="frame" x="250" y="375" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="L5A-Vh-AdA"/>
+                                    <constraint firstAttribute="width" constant="100" id="jAc-2g-xEe"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mr. Rabbit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7N-8a-PEq">
+                                <rect key="frame" x="261" y="490" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mti-4e-7LA" firstAttribute="width" secondItem="TKn-dq-B5G" secondAttribute="width" id="4Ni-sa-ah2"/>
+                            <constraint firstItem="mti-4e-7LA" firstAttribute="top" secondItem="TKn-dq-B5G" secondAttribute="topMargin" id="53a-O7-sfg"/>
+                            <constraint firstItem="bgy-3v-Qg2" firstAttribute="centerY" secondItem="mti-4e-7LA" secondAttribute="centerY" id="HqT-45-CCe"/>
+                            <constraint firstItem="hGp-kT-SYe" firstAttribute="centerX" secondItem="TKn-dq-B5G" secondAttribute="centerX" id="JPz-Q9-cb1"/>
+                            <constraint firstItem="hGp-kT-SYe" firstAttribute="top" secondItem="mti-4e-7LA" secondAttribute="bottom" constant="-75" id="JZ0-1g-fEl"/>
+                            <constraint firstItem="mti-4e-7LA" firstAttribute="height" secondItem="TKn-dq-B5G" secondAttribute="height" multiplier="1.5/2" id="YGz-0c-Jf1"/>
+                            <constraint firstItem="mti-4e-7LA" firstAttribute="centerX" secondItem="TKn-dq-B5G" secondAttribute="centerX" id="ayg-MX-S6a"/>
+                            <constraint firstItem="y7N-8a-PEq" firstAttribute="top" secondItem="hGp-kT-SYe" secondAttribute="bottom" constant="15" id="d2Q-ZJ-NYr"/>
+                            <constraint firstItem="bgy-3v-Qg2" firstAttribute="centerX" secondItem="mti-4e-7LA" secondAttribute="centerX" id="dgm-UX-NbY"/>
+                            <constraint firstItem="y7N-8a-PEq" firstAttribute="centerX" secondItem="TKn-dq-B5G" secondAttribute="centerX" id="dnn-Wv-NoG"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="xVA-Gr-Uf0"/>
+                    <connections>
+                        <outlet property="backgroundImage" destination="mti-4e-7LA" id="zCL-qH-paN"/>
+                        <outlet property="quote" destination="bgy-3v-Qg2" id="UI0-VJ-8Uc"/>
+                        <outlet property="roundImageView" destination="hGp-kT-SYe" id="52T-Wh-j7W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NSL-uc-8rk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="771" y="-340"/>
         </scene>
     </scenes>
     <resources>

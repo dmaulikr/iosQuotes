@@ -30,6 +30,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var quotesTableView: UITableView!
     var quotes = [Quote]()
     var managedProductName = "Quote"
+    var pressedCellIdentifier:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +40,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let fetchQuoteRequest = NSFetchRequest(entityName: "Quote")
         do {
             quotes = try managedObjectContext.executeFetchRequest(fetchQuoteRequest) as! [Quote]
+            if quotes.count == 0{
+                let quoteAux = QuoteLogic.init(text: "You know nothing John Snow", author: "Ygritte", background: "https://pbs.twimg.com/profile_images/675288295635476480/oLYGkY1j.jpg")
+                
+                let entityDescription = NSEntityDescription.entityForName(managedProductName, inManagedObjectContext: managedObjectContext)
+                
+                let quote = Quote(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+                
+                quote.text = quoteAux.text
+                quote.author = quoteAux.author
+                quote.background = quoteAux.background
+                
+                appdelegate.saveContext()
+                
+                self.quotes.append(quote)
+            }
+            print(quotes[0])
         }
         catch {
             print(error)
         }
-        print(quotes)
 
     }
 
@@ -65,7 +81,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.listImageView.backgroundColor = UIColor.randomColor()
             //Guardar colors?
 
-            cell.roundBackgroundLetter.text = "S"
+            let stringAux = quotes[indexPath.row].author
+            let index = stringAux!.startIndex.advancedBy(0)
+            let firstChar = stringAux![index]
+            
+            cell.roundBackgroundLetter.text = String(firstChar)
+            cell.authorName.text = stringAux
             //cell.roundBackgroundLetter.font = UIFont.boldSystemFontOfSize(25)
             cell.roundBackgroundLetter.textColor = UIColor.whiteColor()
             cell.roundBackgroundLetter.textAlignment = NSTextAlignment.Center
@@ -74,6 +95,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
         }
         return UITableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("Hola")
+        pressedCellIdentifier = indexPath.row
+        performSegueWithIdentifier("showSegue", sender: self)
     }
     
     func addQuote(quoteLogic:QuoteLogic) ->Void {
@@ -98,6 +125,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         appDelegate.saveContext()
         
         self.quotes.append(quote)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            if identifier == "showSegue" {
+                if let destination = segue.destinationViewController as? ExpandedListItemViewController {
+                    destination.quote.text = "Hola"
+//                    quotes[pressedCellIdentifier].text
+                }
+            }
+        }
     }
 
     

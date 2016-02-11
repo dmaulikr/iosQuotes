@@ -1,14 +1,14 @@
 //
-//  SingleQuoteViewController.swift
+//  ExpandedListItemViewController.swift
 //  quotes
 //
-//  Created by mac33 on 4/2/16.
+//  Created by Xavi on 11/02/16.
 //  Copyright © 2016 mac33. All rights reserved.
 //
 
 import UIKit
 
-class SingleQuoteViewController: UIViewController {
+class ExpandedListItemViewController: UIViewController {
 
     @IBOutlet weak var roundImageView: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -29,10 +29,15 @@ class SingleQuoteViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func goBack() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 
