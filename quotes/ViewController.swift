@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 
 extension UIColor {
@@ -27,9 +27,24 @@ extension UIColor {
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var quotesTableView: UITableView!
+    var quotes = [Quote]()
+    var managedProductName = "Quote"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedObjectContext = appdelegate.managedObjectContext
+        let fetchQuoteRequest = NSFetchRequest(entityName: "Quote")
+        do {
+            quotes = try managedObjectContext.executeFetchRequest(fetchQuoteRequest) as! [Quote]
+        }
+        catch {
+            print(error)
+        }
+        print(quotes)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +54,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 5
+        return quotes.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
@@ -60,6 +75,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         return UITableViewCell()
     }
+    
+    func addQuote(quoteLogic:QuoteLogic) ->Void {
+        self.saveQuote(quoteLogic)
+        let indexPath = NSIndexPath(forRow: self.quotes.count-1, inSection: 0)
+        self.quotesTableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
+    
+    func saveQuote(quoteLogic:QuoteLogic) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedObjectContext = appDelegate.managedObjectContext
+        
+        let entityDescription = NSEntityDescription.entityForName(managedProductName, inManagedObjectContext: managedObjectContext)
+        
+        let quote = Quote(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+        
+        quote.text = quoteLogic.text
+        quote.author = quoteLogic.author
+        quote.background = quoteLogic.background
+        
+        appDelegate.saveContext()
+        
+        self.quotes.append(quote)
+    }
+
     
 }
 

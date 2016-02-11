@@ -16,7 +16,7 @@ class Network{
         self.baseURL = baseURL
     }
     
-    func getRandomQuote(completionHandler:(user:User?) -> Void) {
+    func getQuoteOfTheDay(completionHandler:(quoteLogic:QuoteLogic?) -> Void) {
         
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: baseURL)
@@ -24,18 +24,18 @@ class Network{
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if (error == nil) {
                 if let jsonArray = self.parseJSONFromData(data!) {
-                    if let user = self.parseUserFromJSON(jsonArray) {
-                        completionHandler(user: user)
+                    if let quoteLogic = self.parseQuoteFromJSON(jsonArray) {
+                        completionHandler(quoteLogic: quoteLogic)
                     }
                     else {
-                        completionHandler(user: nil)
+                        completionHandler(quoteLogic: nil)
                     }
                 }
                 else {
-                    completionHandler(user: nil)
+                    completionHandler(quoteLogic: nil)
                 }
             } else {
-                completionHandler(user: nil)
+                completionHandler(quoteLogic: nil)
             }
         })
         task.resume()
@@ -52,20 +52,21 @@ class Network{
         }
     }
     
-    func parseQuoteFromJSON(json:[String:AnyObject]) -> User? {
+    func parseQuoteFromJSON(json:[String:AnyObject]) -> QuoteLogic? {
         if let contents = json["contents"] as? [[String:AnyObject]] {
-            if let quoteObj = contents[0] as? [[String:AnyObject]] {
+            if let quoteObj = contents[0] as? [String:AnyObject] {
                 
-                if let user = User(json: quoteObj) {
-                    return user
+                if let quoteLogic = QuoteLogic(json: quoteObj) {
+                    return quoteLogic
                 }
+            }
             
         }
         return nil
     }
     
     
-    static func downloadImageFromUrl(URL:NSURL) -> UIImage{
+    func downloadImageFromUrl(URL:NSURL) -> UIImage{
         if let data = NSData(contentsOfURL: URL){
             return UIImage(data: data)!
         }
