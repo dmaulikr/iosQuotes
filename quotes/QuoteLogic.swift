@@ -30,11 +30,12 @@ class QuoteLogic{
     }
     
     init?(json:[String:AnyObject] ) {
-        if let text = json["quote"] as? String, let author = json["author"] as? String, let background = json["background"] as?  String {
+        if let text = json["quote"] as? String, let author = json["author"] as? String, let background = json["background"] as?  String, let authorImg = json["authorBackground"] as? String{
             
             self.background = background
             self.text = text
             self.author = author
+            self.authorImg = authorImg
         }
         else {
             self.background = "https://theysaidso.com/img/bgs/man_on_the_mountain.jpg"

@@ -25,7 +25,7 @@ extension UIColor {
     }
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SaveQuoteDelegate {
 
     @IBOutlet weak var quotesTableView: UITableView!
     var quotes = [Quote]()
@@ -67,7 +67,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 quote.text = quoteLogic.text
                 quote.author = quoteLogic.author
                 quote.background = quoteLogic.background
-                if quoteAux.authorImg != nil {
+                if quoteLogic.authorImg != nil {
                     quote.authorImg = quoteLogic.authorImg
                 }
                 
@@ -154,9 +154,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     if quotes[pressedCellIdentifier].authorImg != nil{
                         destination.authorImgStr = quotes[pressedCellIdentifier].authorImg
                     }
+                    //destination.delegate = self
                 }
             }
         }
+    }
+    
+    func saveAndAddQuote(quoteLogic:QuoteLogic){
+        print("El delegate funciona")
+        let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedObjectContext = appdelegate.managedObjectContext
+        let entityDescription = NSEntityDescription.entityForName(managedProductName, inManagedObjectContext: managedObjectContext)
+        
+        let quote = Quote(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+        
+        quote.text = quoteLogic.text
+        quote.author = quoteLogic.author
+        quote.background = quoteLogic.background
+        if quoteLogic.authorImg != nil {
+            quote.authorImg = quoteLogic.authorImg
+        }
+        
+        appdelegate.saveContext()
+        
+        self.quotes.append(quote)
     }
 
     

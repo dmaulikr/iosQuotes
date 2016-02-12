@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SaveQuoteDelegate {
+    func saveAndAddQuote(quoteLogic:QuoteLogic)
+}
+
 class SingleQuoteViewController: UIViewController {
 
     @IBOutlet weak var roundImageView: UIImageView!
@@ -18,6 +22,8 @@ class SingleQuoteViewController: UIViewController {
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     
+    var delegate:SaveQuoteDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         roundImageView.layer.cornerRadius = roundImageView.frame.size.width / 2
@@ -27,9 +33,7 @@ class SingleQuoteViewController: UIViewController {
         
         network = Network.init()
         network.getQuoteOfTheDay { quoteLogic -> Void in
-            print(quoteLogic)
             if let quote = quoteLogic {
-                print("Hola")
                 dispatch_async(dispatch_get_main_queue()) {
                     self.quoteLabel.text = quote.text
                     self.authorLabel.text = quote.author
@@ -43,9 +47,59 @@ class SingleQuoteViewController: UIViewController {
                         }
                         
                     }
+                    
+                    if let url = NSURL(string: quote.authorImg!){
+                        self.network = Network.init()
+                        if let image = self.network.downloadImageFromUrl(url){
+                            self.roundImageView.image = image
+                        } else {
+                            self.roundImageView.image = UIImage(named: "profile-bg")
+                        }
+                        
+                    }
+                    self.quoteLogicAux = quote
                 }
             }
         }
+    }
+    
+    
+    @IBAction func nextPressed(sender: AnyObject) {
+        network.getQuoteOfTheDay { quoteLogic -> Void in
+            if let quote = quoteLogic {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.quoteLabel.text = quote.text
+                    self.authorLabel.text = quote.author
+                    
+                    if let url = NSURL(string: quote.background){
+                        self.network = Network.init()
+                        if let image = self.network.downloadImageFromUrl(url){
+                            self.backgroundImage.image = image
+                        } else {
+                            self.backgroundImage.image = UIImage(named: "profile-bg")
+                        }
+
+                    }
+                    
+                    if let url = NSURL(string: quote.authorImg!){
+                        self.network = Network.init()
+                        if let image = self.network.downloadImageFromUrl(url){
+                            self.roundImageView.image = image
+                        } else {
+                            self.roundImageView.image = UIImage(named: "profile-bg")
+                        }
+                        
+                    }
+                    self.quoteLogicAux = quote
+                }
+            }
+        }
+    }
+    
+    
+    @IBAction func savePressed(sender: AnyObject) {
+        print("Guardar")
+        delegate?.saveAndAddQuote(quoteLogicAux)
     }
 
     override func didReceiveMemoryWarning() {

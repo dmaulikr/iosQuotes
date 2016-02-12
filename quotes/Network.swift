@@ -17,7 +17,8 @@ class Network{
     }
     
     init(){
-        self.baseURL = NSURL(string: "http://quotes.rest/qod.json")!
+//        self.baseURL = NSURL(string: "http://quotes.rest/qod.json")!
+        self.baseURL = NSURL(string: "https://iosquotes.herokuapp.com/api/quotes")!
     }
     
     func getQuoteOfTheDay(completionHandler:(quoteLogic:QuoteLogic?) -> Void) {
@@ -31,7 +32,7 @@ class Network{
                 print("1r if superat")
                 if let jsonArray = self.parseJSONFromData(data!) {
                     print("2r if superat")
-                    if let quoteLogic = self.parseQuoteFromJSON(jsonArray) {
+                    if let quoteLogic = self.parseQuoteFromHerokuJSON(jsonArray) {
                         print("3r if superat")
                         completionHandler(quoteLogic: quoteLogic)
                     }
@@ -73,6 +74,13 @@ class Network{
                 }
             }
             
+        }
+        return nil
+    }
+    
+    func parseQuoteFromHerokuJSON(json:[String:AnyObject]) -> QuoteLogic? {
+        if let quoteLogic = QuoteLogic(json: json) {
+            return quoteLogic
         }
         return nil
     }
