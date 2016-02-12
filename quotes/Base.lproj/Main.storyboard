@@ -58,7 +58,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="featured" id="Ypi-ZC-k0u"/>
                     <connections>
+                        <outlet property="authorLabel" destination="wCo-gZ-oOR" id="Xvm-qM-qwK"/>
                         <outlet property="backgroundImage" destination="7cj-Ie-Etb" id="3qh-np-WAx"/>
+                        <outlet property="quoteLabel" destination="PP8-Mz-vYC" id="5eV-QY-OHh"/>
                         <outlet property="roundImageView" destination="cU8-DW-Niz" id="dJO-dX-gQN"/>
                     </connections>
                 </viewController>
@@ -185,8 +187,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-bg" translatesAutoresizingMaskIntoConstraints="NO" id="mti-4e-7LA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I don't know" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="bgy-3v-Qg2">
-                                <rect key="frame" x="225" y="161" width="151" height="33"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I don't know" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="bgy-3v-Qg2">
+                                <rect key="frame" x="225" y="209" width="151" height="33"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -198,8 +200,8 @@
                                     <constraint firstAttribute="width" constant="100" id="jAc-2g-xEe"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Anonymous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7N-8a-PEq">
-                                <rect key="frame" x="248" y="490" width="91" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7N-8a-PEq">
+                                <rect key="frame" x="255" y="490" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

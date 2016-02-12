@@ -39,7 +39,6 @@ class ExpandedListItemViewController: UIViewController {
             } else {
                 backgroundImage.image = UIImage(named: "profile-bg")
             }
-            
         }
         
         if authorImgStr != nil {

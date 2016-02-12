@@ -13,8 +13,10 @@ class SingleQuoteViewController: UIViewController {
     @IBOutlet weak var roundImageView: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
     var network:Network!
+    var quoteLogicAux:QuoteLogic!
     
-    @IBOutlet weak var quote: UILabel!
+    @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +25,26 @@ class SingleQuoteViewController: UIViewController {
         roundImageView.layer.borderWidth = 3
         roundImageView.layer.borderColor = UIColor.whiteColor().CGColor
         
-        if let url = NSURL(string: "https://theysaidso.com/img/bgs/man_on_the_mountain.jpg"){
-            network = Network.init(baseURL: url)
-            backgroundImage.image = network.downloadImageFromUrl(url)
+        network = Network.init()
+        network.getQuoteOfTheDay { quoteLogic -> Void in
+            print(quoteLogic)
+            if let quote = quoteLogic {
+                print("Hola")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.quoteLabel.text = quote.text
+                    self.authorLabel.text = quote.author
+                    
+                    if let url = NSURL(string: quote.background){
+                        self.network = Network.init()
+                        if let image = self.network.downloadImageFromUrl(url){
+                            self.backgroundImage.image = image
+                        } else {
+                            self.backgroundImage.image = UIImage(named: "profile-bg")
+                        }
+                    }
+                }
+            }
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
