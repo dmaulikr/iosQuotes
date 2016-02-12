@@ -66,10 +66,10 @@ class Network{
     }
     
     
-    func downloadImageFromUrl(URL:NSURL) -> UIImage{
+    func downloadImageFromUrl(URL:NSURL) -> UIImage?{
         if let data = NSData(contentsOfURL: URL){
             return UIImage(data: data)!
         }
-        return UIImage(named: "profile_bg")!
+        return nil
     }
 }

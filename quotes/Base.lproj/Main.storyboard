@@ -106,7 +106,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjY-h7-c2f">
                                                     <rect key="frame" x="118" y="26" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -185,8 +185,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-bg" translatesAutoresizingMaskIntoConstraints="NO" id="mti-4e-7LA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your time is limited, so don’t waste it living someone else’s life" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="bgy-3v-Qg2">
-                                <rect key="frame" x="177" y="161" width="246" height="129"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I don't know" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="bgy-3v-Qg2">
+                                <rect key="frame" x="225" y="161" width="151" height="33"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -198,12 +198,19 @@
                                     <constraint firstAttribute="width" constant="100" id="jAc-2g-xEe"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mr. Rabbit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7N-8a-PEq">
-                                <rect key="frame" x="261" y="490" width="78" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Anonymous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7N-8a-PEq">
+                                <rect key="frame" x="248" y="490" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Br1-JQ-rzV">
+                                <rect key="frame" x="272" y="536" width="57" height="30"/>
+                                <state key="normal" title="Go back"/>
+                                <connections>
+                                    <action selector="goBack:" destination="BKU-mg-4W7" eventType="touchUpInside" id="2rl-k0-C3E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -217,10 +224,12 @@
                             <constraint firstItem="y7N-8a-PEq" firstAttribute="top" secondItem="hGp-kT-SYe" secondAttribute="bottom" constant="15" id="d2Q-ZJ-NYr"/>
                             <constraint firstItem="bgy-3v-Qg2" firstAttribute="centerX" secondItem="mti-4e-7LA" secondAttribute="centerX" id="dgm-UX-NbY"/>
                             <constraint firstItem="y7N-8a-PEq" firstAttribute="centerX" secondItem="TKn-dq-B5G" secondAttribute="centerX" id="dnn-Wv-NoG"/>
+                            <constraint firstItem="Br1-JQ-rzV" firstAttribute="top" secondItem="y7N-8a-PEq" secondAttribute="bottom" constant="25" id="kpj-8k-YJJ"/>
+                            <constraint firstItem="Br1-JQ-rzV" firstAttribute="centerX" secondItem="TKn-dq-B5G" secondAttribute="centerX" id="nSz-HO-xhx"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="xVA-Gr-Uf0"/>
                     <connections>
+                        <outlet property="authorLabel" destination="y7N-8a-PEq" id="bEm-0m-n46"/>
                         <outlet property="backgroundImage" destination="mti-4e-7LA" id="zCL-qH-paN"/>
                         <outlet property="quote" destination="bgy-3v-Qg2" id="UI0-VJ-8Uc"/>
                         <outlet property="roundImageView" destination="hGp-kT-SYe" id="52T-Wh-j7W"/>

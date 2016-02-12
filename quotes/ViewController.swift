@@ -41,7 +41,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         do {
             quotes = try managedObjectContext.executeFetchRequest(fetchQuoteRequest) as! [Quote]
             if quotes.count == 0{
-                let quoteAux = QuoteLogic.init(text: "You know nothing John Snow", author: "Ygritte", background: "https://pbs.twimg.com/profile_images/675288295635476480/oLYGkY1j.jpg")
+                var initQuotes = [QuoteLogic]()
+                
+                let quoteAux = QuoteLogic.init(text: "You know nothing John Snow", author: "Ygritte", background: "http://media3.popsugar-assets.com/files/2015/06/17/859/n/1922283/c2bbcc0f_edit_img_image_1090627_1434569298_PSRUSH_0617_JonSnow_061715_SQUARE/i/Reasons-People-Love-Game-Thrones-Jon-Snow-Video.jpg")
+                
+                initQuotes.append(quoteAux)
                 
                 let entityDescription = NSEntityDescription.entityForName(managedProductName, inManagedObjectContext: managedObjectContext)
                 
@@ -131,7 +135,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let identifier = segue.identifier {
             if identifier == "showSegue" {
                 if let destination = segue.destinationViewController as? ExpandedListItemViewController {
-                    destination.quote.text = "Hola"
+                    destination.quoteStr = quotes[pressedCellIdentifier].text!
+                    destination.authorStr = quotes[pressedCellIdentifier].author!
+                    destination.backgroundStr = quotes[pressedCellIdentifier].background!
+                    if pressedCellIdentifier == 0{
+                        destination.authorImgStr = "https://pbs.twimg.com/profile_images/678707279240253441/3OWsMivw.png"
+                    }
+
+
 //                    quotes[pressedCellIdentifier].text
                 }
             }

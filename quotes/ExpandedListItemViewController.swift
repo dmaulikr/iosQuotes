@@ -14,7 +14,13 @@ class ExpandedListItemViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     var network:Network!
     
+    var quoteStr:String!
+    var authorStr:String!
+    var backgroundStr:String!
+    var authorImgStr:String?
+    
     @IBOutlet weak var quote: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +29,26 @@ class ExpandedListItemViewController: UIViewController {
         roundImageView.layer.borderWidth = 3
         roundImageView.layer.borderColor = UIColor.whiteColor().CGColor
         
-        if let url = NSURL(string: "https://theysaidso.com/img/bgs/man_on_the_mountain.jpg"){
+        quote.text = quoteStr
+        authorLabel.text = authorStr
+        
+        if let url = NSURL(string: backgroundStr){
             network = Network.init(baseURL: url)
-            backgroundImage.image = network.downloadImageFromUrl(url)
+            if let image = network.downloadImageFromUrl(url){
+                backgroundImage.image = image
+            } else {
+                backgroundImage.image = UIImage(named: "profile-bg")
+            }
+            
         }
+        
+        if authorImgStr != nil {
+            print("Hey I'm a fucking ERROR")
+            if let url2 = NSURL(string: authorImgStr!){
+                roundImageView.image = network.downloadImageFromUrl(url2)
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -35,8 +57,7 @@ class ExpandedListItemViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func goBack() {
+    @IBAction func goBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
