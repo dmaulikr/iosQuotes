@@ -7,7 +7,7 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Single Quote View Controller-->
+        <!--New Quotes-->
         <scene sceneID="9Q8-Qf-RZ1">
             <objects>
                 <viewController id="53X-KN-6RG" customClass="SingleQuoteViewController" customModule="quotes" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,7 +82,7 @@
                             <constraint firstItem="PP8-Mz-vYC" firstAttribute="centerX" secondItem="7cj-Ie-Etb" secondAttribute="centerX" id="wtj-Gt-o8O"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="Ypi-ZC-k0u"/>
+                    <tabBarItem key="tabBarItem" title="New Quotes" image="right176" id="Ypi-ZC-k0u"/>
                     <connections>
                         <outlet property="authorLabel" destination="wCo-gZ-oOR" id="Xvm-qM-qwK"/>
                         <outlet property="backgroundImage" destination="7cj-Ie-Etb" id="3qh-np-WAx"/>
@@ -94,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="1543" y="418"/>
         </scene>
-        <!--View Controller-->
+        <!--Downloaded-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="quotes" customModuleProvider="target" sceneMemberID="viewController">
@@ -170,7 +170,7 @@
                             <constraint firstItem="0dZ-mO-ccg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WAy-Hm-R3z"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="downloads" id="X5T-vD-lvQ"/>
+                    <tabBarItem key="tabBarItem" title="Downloaded" image="text156" id="X5T-vD-lvQ"/>
                     <connections>
                         <outlet property="quotesTableView" destination="0dZ-mO-ccg" id="A1h-h7-Q0W"/>
                         <segue destination="BKU-mg-4W7" kind="show" identifier="showSegue" id="IwB-eg-YtA"/>
@@ -273,5 +273,7 @@
         <image name="profile-bg" width="640" height="434"/>
         <image name="profile-rabbit-toy" width="300" height="300"/>
         <image name="right-arrow6" width="64" height="64"/>
+        <image name="right176" width="24" height="24"/>
+        <image name="text156" width="24" height="24"/>
     </resources>
 </document>

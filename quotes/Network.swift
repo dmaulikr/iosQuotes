@@ -24,16 +24,12 @@ class Network{
     func getQuoteOfTheDay(completionHandler:(quoteLogic:QuoteLogic?) -> Void) {
         
         let session = NSURLSession.sharedSession()
-        print(baseURL)
         let request = NSMutableURLRequest(URL: baseURL)
         
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if (error == nil) {
-                print("1r if superat")
                 if let jsonArray = self.parseJSONFromData(data!) {
-                    print("2r if superat")
                     if let quoteLogic = self.parseQuoteFromHerokuJSON(jsonArray) {
-                        print("3r if superat")
                         completionHandler(quoteLogic: quoteLogic)
                     }
                     else {
@@ -63,12 +59,7 @@ class Network{
     
     func parseQuoteFromJSON(json:[String:AnyObject]) -> QuoteLogic? {
         if let contents = json["contents"] as? [String:AnyObject] {
-            print("1r if intern superat")
-//            print(contents)
-//            print(contents["quotes"])
-            print(contents["quotes"]![0])
             if let quoteObj = contents["quotes"]![0] as? [String:AnyObject] {
-                print("2n if superat")
                 if let quoteLogic = QuoteLogic(json: quoteObj) {
                     return quoteLogic
                 }

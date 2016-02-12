@@ -77,6 +77,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
         }
+        if let auxViewController = self.tabBarController?.viewControllers![1] as? SingleQuoteViewController{
+            auxViewController.delegate = self;
+        }
 
 
     }
@@ -154,14 +157,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     if quotes[pressedCellIdentifier].authorImg != nil{
                         destination.authorImgStr = quotes[pressedCellIdentifier].authorImg
                     }
-                    //destination.delegate = self
                 }
             }
         }
     }
     
     func saveAndAddQuote(quoteLogic:QuoteLogic){
-        print("El delegate funciona")
         let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedObjectContext = appdelegate.managedObjectContext
         let entityDescription = NSEntityDescription.entityForName(managedProductName, inManagedObjectContext: managedObjectContext)
@@ -178,6 +179,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         appdelegate.saveContext()
         
         self.quotes.append(quote)
+        let indexPath = NSIndexPath(forRow: self.quotes.count-1, inSection: 0)
+        self.quotesTableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
 
     

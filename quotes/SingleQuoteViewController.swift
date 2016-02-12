@@ -98,7 +98,6 @@ class SingleQuoteViewController: UIViewController {
     
     
     @IBAction func savePressed(sender: AnyObject) {
-        print("Guardar")
         delegate?.saveAndAddQuote(quoteLogicAux)
     }
 
