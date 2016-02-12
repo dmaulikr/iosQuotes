@@ -17,5 +17,6 @@ extension Quote {
     @NSManaged var text: String?
     @NSManaged var author: String?
     @NSManaged var background: String?
+    @NSManaged var authorImg: String?
 
 }

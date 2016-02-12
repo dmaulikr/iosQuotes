@@ -43,7 +43,6 @@ class ExpandedListItemViewController: UIViewController {
         }
         
         if authorImgStr != nil {
-            print("Hey I'm a fucking ERROR")
             if let url2 = NSURL(string: authorImgStr!){
                 roundImageView.image = network.downloadImageFromUrl(url2)
             }

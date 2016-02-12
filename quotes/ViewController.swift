@@ -40,30 +40,44 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let fetchQuoteRequest = NSFetchRequest(entityName: "Quote")
         do {
             quotes = try managedObjectContext.executeFetchRequest(fetchQuoteRequest) as! [Quote]
-            if quotes.count == 0{
-                var initQuotes = [QuoteLogic]()
-                
-                let quoteAux = QuoteLogic.init(text: "You know nothing John Snow", author: "Ygritte", background: "http://media3.popsugar-assets.com/files/2015/06/17/859/n/1922283/c2bbcc0f_edit_img_image_1090627_1434569298_PSRUSH_0617_JonSnow_061715_SQUARE/i/Reasons-People-Love-Game-Thrones-Jon-Snow-Video.jpg")
-                
-                initQuotes.append(quoteAux)
-                
-                let entityDescription = NSEntityDescription.entityForName(managedProductName, inManagedObjectContext: managedObjectContext)
-                
+        }
+        catch {
+            print(error)
+        }
+        if quotes.count == 0{
+            var initQuotes = [QuoteLogic]()
+            
+            var quoteAux = QuoteLogic.init(text: "You know nothing John Snow", author: "Ygritte", background: "http://media3.popsugar-assets.com/files/2015/06/17/859/n/1922283/c2bbcc0f_edit_img_image_1090627_1434569298_PSRUSH_0617_JonSnow_061715_SQUARE/i/Reasons-People-Love-Game-Thrones-Jon-Snow-Video.jpg", authorImg: "https://pbs.twimg.com/profile_images/678707279240253441/3OWsMivw.png")
+            
+            initQuotes.append(quoteAux)
+            
+            quoteAux = QuoteLogic.init(text: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe", author: "Albert Einstein", background: "http://cdn.phys.org/newman/csz/news/800/2015/3-whatisthebig.jpg", authorImg: "https://static-s.aa-cdn.net/img/ios/1015381239/cde0d519486b3ff5fd2a190bd33e6a13?v=1")
+            
+            initQuotes.append(quoteAux)
+            
+            //                quoteAux = QuoteLogic.init(text: "You know nothing John Snow", author: "Ygritte", background: "http://media3.popsugar-assets.com/files/2015/06/17/859/n/1922283/c2bbcc0f_edit_img_image_1090627_1434569298_PSRUSH_0617_JonSnow_061715_SQUARE/i/Reasons-People-Love-Game-Thrones-Jon-Snow-Video.jpg", authorImg: "https://pbs.twimg.com/profile_images/678707279240253441/3OWsMivw.png")
+            //
+            //                initQuotes.append(quoteAux)
+            
+            let entityDescription = NSEntityDescription.entityForName(managedProductName, inManagedObjectContext: managedObjectContext)
+            
+            for quoteLogic in initQuotes{
                 let quote = Quote(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
                 
-                quote.text = quoteAux.text
-                quote.author = quoteAux.author
-                quote.background = quoteAux.background
+                quote.text = quoteLogic.text
+                quote.author = quoteLogic.author
+                quote.background = quoteLogic.background
+                if quoteAux.authorImg != nil {
+                    quote.authorImg = quoteLogic.authorImg
+                }
                 
                 appdelegate.saveContext()
                 
                 self.quotes.append(quote)
             }
-            print(quotes[0])
+            
         }
-        catch {
-            print(error)
-        }
+
 
     }
 
@@ -102,7 +116,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Hola")
         pressedCellIdentifier = indexPath.row
         performSegueWithIdentifier("showSegue", sender: self)
     }
@@ -138,12 +151,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     destination.quoteStr = quotes[pressedCellIdentifier].text!
                     destination.authorStr = quotes[pressedCellIdentifier].author!
                     destination.backgroundStr = quotes[pressedCellIdentifier].background!
-                    if pressedCellIdentifier == 0{
-                        destination.authorImgStr = "https://pbs.twimg.com/profile_images/678707279240253441/3OWsMivw.png"
+                    if quotes[pressedCellIdentifier].authorImg != nil{
+                        destination.authorImgStr = quotes[pressedCellIdentifier].authorImg
                     }
-
-
-//                    quotes[pressedCellIdentifier].text
                 }
             }
         }

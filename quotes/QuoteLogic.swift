@@ -14,11 +14,19 @@ class QuoteLogic{
     var text:String
     var author:String
     var background:String
+    var authorImg:String?
     
     init(text:String, author:String, background:String){
         self.background = background
         self.text = text
         self.author = author
+    }
+    
+    init(text:String, author:String, background:String, authorImg:String){
+        self.background = background
+        self.text = text
+        self.author = author
+        self.authorImg = authorImg
     }
     
     init?(json:[String:AnyObject] ) {
