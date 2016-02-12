@@ -41,6 +41,7 @@ class SingleQuoteViewController: UIViewController {
                         } else {
                             self.backgroundImage.image = UIImage(named: "profile-bg")
                         }
+                        
                     }
                 }
             }
